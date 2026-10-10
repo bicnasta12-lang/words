@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f6f2eb">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Word Cards">
+<link rel="manifest" href="./manifest.json">
+<link rel="stylesheet" href="./styles.css">
+<title>Word Cards — английские карточки</title>
+</head>
+<body>
+<main class="app">
+<header class="top"><div><p class="eyebrow">ТВОЙ СЛОВАРЬ</p><h1>Word Cards <span>✦</span></h1><p class="muted">Учись в своём темпе</p></div><button id="help" class="icon-btn">ⓘ</button></header>
+<nav class="tabs"><button class="tab active" data-view="study">Учить</button><button class="tab" data-view="add">Добавить</button><button class="tab" data-view="library">Мои слова</button></nav>
+<section id="studyView" class="view">
+<div class="stats"><div class="stat"><strong id="dueCount">0</strong><span>на сегодня</span></div><div class="stat"><strong id="totalCount">0</strong><span>всего слов</span></div><div class="stat"><strong id="masteredCount">0</strong><span>знаю хорошо</span></div></div>
+<div class="study-controls"><label class="field compact"><span>Тема</span><select id="studyTopic"><option value="all">Все темы</option></select></label><label class="field compact"><span>Направление</span><select id="direction"><option value="ru-en">Русский → английский</option><option value="en-ru">Английский → русский</option><option value="mixed">Вперемешку</option></select></label></div>
+<div id="emptyStudy" class="empty"><div class="empty-icon">✦</div><h2>Пока нет карточек</h2><p>Добавь первое слово, и оно появится здесь.</p><button class="primary" data-goto="add">Добавить слово</button></div>
+<div id="cardArea" class="hidden"><p id="progressLabel" class="progress-label"></p><button id="flashcard" class="flashcard"><span class="card-topline"><span id="cardTopic"></span><span>НАЖМИ, ЧТОБЫ ПЕРЕВЕРНУТЬ</span></span><span id="cardPrompt" class="card-prompt"></span><span id="cardExample" class="card-example"></span><span id="cardAnswer" class="card-answer hidden"></span><span class="card-hint">✧</span></button>
+<div id="ratingArea" class="rating-area hidden"><p class="muted center">Насколько хорошо вспомнила?</p><div class="ratings"><button class="rate again" data-rating="again"><strong>Не вспомнила</strong><span>Повторить скоро</span></button><button class="rate hard" data-rating="hard"><strong>Сложно</strong><span>Короткий интервал</span></button><button class="rate good" data-rating="good"><strong>Помню</strong><span>Обычный интервал</span></button><button class="rate easy" data-rating="easy"><strong>Легко</strong><span>Дольше не показывать</span></button></div></div>
+<div id="studyActions" class="study-actions"><button id="skip" class="secondary">Пропустить</button><button id="showAnswer" class="primary">Показать ответ</button></div></div>
+</section>
+<section id="addView" class="view hidden"><div class="section-heading"><p class="eyebrow">НОВАЯ КАРТОЧКА</p><h2>Добавить слово</h2><p class="muted">Сохраняй слова, которые встречаются на занятиях.</p></div>
+<form id="wordForm" class="form-card"><label class="field"><span>Слово или фраза на русском *</span><input id="ru" required maxlength="200" placeholder="например, удивляться"></label><label class="field"><span>Перевод на английский *</span><input id="en" required maxlength="200" placeholder="to be surprised"></label><label class="field"><span>Тема</span><input id="topic" list="topics" maxlength="60" placeholder="например, Учёба"><datalist id="topics"></datalist></label><label class="field"><span>Пример (необязательно)</span><textarea id="example" maxlength="500" rows="3" placeholder="I was surprised by the news."></textarea></label><button class="primary full">Сохранить карточку</button><p id="message" class="form-message"></p></form><div class="tip"><b>Совет:</b> можно добавлять целые фразы, а не только отдельные слова.</div></section>
+<section id="libraryView" class="view hidden"><div class="section-heading"><p class="eyebrow">ТВОИ ЗАПАСЫ</p><h2>Мои слова</h2><p class="muted">Ищи слова, фильтруй по темам и удаляй ненужное.</p></div><label class="field"><span>Поиск</span><input id="search" placeholder="Найти слово или перевод"></label><label class="field"><span>Тема</span><select id="libraryTopic"><option value="all">Все темы</option></select></label><div id="libraryList" class="library-list"></div><div class="backup-row"><button id="export" class="secondary">Экспортировать копию</button><label class="secondary import-label">Импортировать копию<input id="import" type="file" accept="application/json,.json" hidden></label></div><p class="muted small">Сохраняй резервную копию в «Файлы» время от времени.</p></section>
+<footer>Сделано для твоего английского <span>♡</span></footer></main>
+<dialog id="helpDialog"><div class="dialog-content"><button id="closeHelp" class="dialog-close">×</button><h2>Как пользоваться</h2><ol><li>Во вкладке «Добавить» внеси слово и перевод.</li><li>Во вкладке «Учить» нажми карточку или кнопку ответа.</li><li>Оцени, насколько хорошо вспомнила: сложные слова будут появляться чаще.</li><li>Во вкладке «Мои слова» делай резервную копию.</li><li>Для установки на iPhone открой сайт в Safari → «Поделиться» → «На экран Домой».</li></ol><p class="muted small">Данные хранятся локально на этом устройстве и не синхронизируются автоматически.</p><button id="okHelp" class="primary full">Понятно</button></div></dialog>
+<script src="./app.js"></script>
+</body></html>

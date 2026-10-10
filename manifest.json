@@ -1,0 +1,12 @@
+{
+  "name": "Word Cards — английские карточки",
+  "short_name": "Word Cards",
+  "description": "Личные карточки для изучения английских слов",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f2eb",
+  "theme_color": "#f6f2eb",
+  "lang": "ru",
+  "icons": []
+}
